@@ -1,1231 +1,212 @@
+import axios from 'axios'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import axios from 'axios'
-
 import App from './App.vue'
-import HomePage from './pages/HomePage.vue'
-import DataPage from './pages/DataPage.vue'
-import MemoPage from './pages/MemoPage.vue'
-// import TeachPage from './pages/TeachPage.vue'
+import "./index.css";
+
+
+import ListPage from "./components/ListPage.vue"
+import DataPage from "./components/DataPage.vue"
 
 const routes = [
-    {name : 'home', path: '/', component: HomePage},
-    {name : 'data', path: '/userData/:userId?', component: DataPage},
-    {name : 'memo', path: '/userMemo/:userId?/:titleId?', component: MemoPage},
-    // {name : 'teach', path: '/teach', component: TeachPage},
+  { name: 'list', path:'/', component: ListPage},
+  { name: 'data', path:'/data/:movieId', component: DataPage},
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 })
-
+  
 const app = createApp(App)
 
-// app.mount('#app')
 app.config.globalProperties.$axios = axios
-app.config.globalProperties.$axiosDataList = [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "quis ut nam facilis et officia qui",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 3,
-    "title": "fugiat veniam minus",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 4,
-    "title": "et porro tempora",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 5,
-    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 6,
-    "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 7,
-    "title": "illo expedita consequatur quia in",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 8,
-    "title": "quo adipisci enim quam ut ab",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 9,
-    "title": "molestiae perspiciatis ipsa",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 10,
-    "title": "illo est ratione doloremque quia maiores aut",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 11,
-    "title": "vero rerum temporibus dolor",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 12,
-    "title": "ipsa repellendus fugit nisi",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 13,
-    "title": "et doloremque nulla",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 14,
-    "title": "repellendus sunt dolores architecto voluptatum",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 15,
-    "title": "ab voluptatum amet voluptas",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 16,
-    "title": "accusamus eos facilis sint et aut voluptatem",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 17,
-    "title": "quo laboriosam deleniti aut qui",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 18,
-    "title": "dolorum est consequatur ea mollitia in culpa",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 19,
-    "title": "molestiae ipsa aut voluptatibus pariatur dolor nihil",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 20,
-    "title": "ullam nobis libero sapiente ad optio sint",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 21,
-    "title": "suscipit repellat esse quibusdam voluptatem incidunt",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 22,
-    "title": "distinctio vitae autem nihil ut molestias quo",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 23,
-    "title": "et itaque necessitatibus maxime molestiae qui quas velit",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 24,
-    "title": "adipisci non ad dicta qui amet quaerat doloribus ea",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 25,
-    "title": "voluptas quo tenetur perspiciatis explicabo natus",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 26,
-    "title": "aliquam aut quasi",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 27,
-    "title": "veritatis pariatur delectus",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 28,
-    "title": "nesciunt totam sit blanditiis sit",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 29,
-    "title": "laborum aut in quam",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 30,
-    "title": "nemo perspiciatis repellat ut dolor libero commodi blanditiis omnis",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 31,
-    "title": "repudiandae totam in est sint facere fuga",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 32,
-    "title": "earum doloribus ea doloremque quis",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 33,
-    "title": "sint sit aut vero",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 34,
-    "title": "porro aut necessitatibus eaque distinctio",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 35,
-    "title": "repellendus veritatis molestias dicta incidunt",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 36,
-    "title": "excepturi deleniti adipisci voluptatem et neque optio illum ad",
-    "completed": true
-  },
-  {
-    "userId": 2,
-    "id": 37,
-    "title": "sunt cum tempora",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 38,
-    "title": "totam quia non",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 39,
-    "title": "doloremque quibusdam asperiores libero corrupti illum qui omnis",
-    "completed": false
-  },
-  {
-    "userId": 2,
-    "id": 40,
-    "title": "totam atque quo nesciunt",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 41,
-    "title": "aliquid amet impedit consequatur aspernatur placeat eaque fugiat suscipit",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 42,
-    "title": "rerum perferendis error quia ut eveniet",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 43,
-    "title": "tempore ut sint quis recusandae",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 44,
-    "title": "cum debitis quis accusamus doloremque ipsa natus sapiente omnis",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 45,
-    "title": "velit soluta adipisci molestias reiciendis harum",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 46,
-    "title": "vel voluptatem repellat nihil placeat corporis",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 47,
-    "title": "nam qui rerum fugiat accusamus",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 48,
-    "title": "sit reprehenderit omnis quia",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 49,
-    "title": "ut necessitatibus aut maiores debitis officia blanditiis velit et",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 50,
-    "title": "cupiditate necessitatibus ullam aut quis dolor voluptate",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 51,
-    "title": "distinctio exercitationem ab doloribus",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 52,
-    "title": "nesciunt dolorum quis recusandae ad pariatur ratione",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 53,
-    "title": "qui labore est occaecati recusandae aliquid quam",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 54,
-    "title": "quis et est ut voluptate quam dolor",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 55,
-    "title": "voluptatum omnis minima qui occaecati provident nulla voluptatem ratione",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 56,
-    "title": "deleniti ea temporibus enim",
-    "completed": true
-  },
-  {
-    "userId": 3,
-    "id": 57,
-    "title": "pariatur et magnam ea doloribus similique voluptatem rerum quia",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 58,
-    "title": "est dicta totam qui explicabo doloribus qui dignissimos",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 59,
-    "title": "perspiciatis velit id laborum placeat iusto et aliquam odio",
-    "completed": false
-  },
-  {
-    "userId": 3,
-    "id": 60,
-    "title": "et sequi qui architecto ut adipisci",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 61,
-    "title": "odit optio omnis qui sunt",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 62,
-    "title": "et placeat et tempore aspernatur sint numquam",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 63,
-    "title": "doloremque aut dolores quidem fuga qui nulla",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 64,
-    "title": "voluptas consequatur qui ut quia magnam nemo esse",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 65,
-    "title": "fugiat pariatur ratione ut asperiores necessitatibus magni",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 66,
-    "title": "rerum eum molestias autem voluptatum sit optio",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 67,
-    "title": "quia voluptatibus voluptatem quos similique maiores repellat",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 68,
-    "title": "aut id perspiciatis voluptatem iusto",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 69,
-    "title": "doloribus sint dolorum ab adipisci itaque dignissimos aliquam suscipit",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 70,
-    "title": "ut sequi accusantium et mollitia delectus sunt",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 71,
-    "title": "aut velit saepe ullam",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 72,
-    "title": "praesentium facilis facere quis harum voluptatibus voluptatem eum",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 73,
-    "title": "sint amet quia totam corporis qui exercitationem commodi",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 74,
-    "title": "expedita tempore nobis eveniet laborum maiores",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 75,
-    "title": "occaecati adipisci est possimus totam",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 76,
-    "title": "sequi dolorem sed",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 77,
-    "title": "maiores aut nesciunt delectus exercitationem vel assumenda eligendi at",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 78,
-    "title": "reiciendis est magnam amet nemo iste recusandae impedit quaerat",
-    "completed": false
-  },
-  {
-    "userId": 4,
-    "id": 79,
-    "title": "eum ipsa maxime ut",
-    "completed": true
-  },
-  {
-    "userId": 4,
-    "id": 80,
-    "title": "tempore molestias dolores rerum sequi voluptates ipsum consequatur",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 81,
-    "title": "suscipit qui totam",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 82,
-    "title": "voluptates eum voluptas et dicta",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 83,
-    "title": "quidem at rerum quis ex aut sit quam",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 84,
-    "title": "sunt veritatis ut voluptate",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 85,
-    "title": "et quia ad iste a",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 86,
-    "title": "incidunt ut saepe autem",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 87,
-    "title": "laudantium quae eligendi consequatur quia et vero autem",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 88,
-    "title": "vitae aut excepturi laboriosam sint aliquam et et accusantium",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 89,
-    "title": "sequi ut omnis et",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 90,
-    "title": "molestiae nisi accusantium tenetur dolorem et",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 91,
-    "title": "nulla quis consequatur saepe qui id expedita",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 92,
-    "title": "in omnis laboriosam",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 93,
-    "title": "odio iure consequatur molestiae quibusdam necessitatibus quia sint",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 94,
-    "title": "facilis modi saepe mollitia",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 95,
-    "title": "vel nihil et molestiae iusto assumenda nemo quo ut",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 96,
-    "title": "nobis suscipit ducimus enim asperiores voluptas",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 97,
-    "title": "dolorum laboriosam eos qui iure aliquam",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 98,
-    "title": "debitis accusantium ut quo facilis nihil quis sapiente necessitatibus",
-    "completed": true
-  },
-  {
-    "userId": 5,
-    "id": 99,
-    "title": "neque voluptates ratione",
-    "completed": false
-  },
-  {
-    "userId": 5,
-    "id": 100,
-    "title": "excepturi a et neque qui expedita vel voluptate",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 101,
-    "title": "explicabo enim cumque porro aperiam occaecati minima",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 102,
-    "title": "sed ab consequatur",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 103,
-    "title": "non sunt delectus illo nulla tenetur enim omnis",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 104,
-    "title": "excepturi non laudantium quo",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 105,
-    "title": "totam quia dolorem et illum repellat voluptas optio",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 106,
-    "title": "ad illo quis voluptatem temporibus",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 107,
-    "title": "praesentium facilis omnis laudantium fugit ad iusto nihil nesciunt",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 108,
-    "title": "a eos eaque nihil et exercitationem incidunt delectus",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 109,
-    "title": "autem temporibus harum quisquam in culpa",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 110,
-    "title": "aut aut ea corporis",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 111,
-    "title": "magni accusantium labore et id quis provident",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 112,
-    "title": "consectetur impedit quisquam qui deserunt non rerum consequuntur eius",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 113,
-    "title": "quia atque aliquam sunt impedit voluptatum rerum assumenda nisi",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 114,
-    "title": "cupiditate quos possimus corporis quisquam exercitationem beatae",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 115,
-    "title": "sed et ea eum",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 116,
-    "title": "ipsa dolores vel facilis ut",
-    "completed": true
-  },
-  {
-    "userId": 6,
-    "id": 117,
-    "title": "sequi quae est et qui qui eveniet asperiores",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 118,
-    "title": "quia modi consequatur vero fugiat",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 119,
-    "title": "corporis ducimus ea perspiciatis iste",
-    "completed": false
-  },
-  {
-    "userId": 6,
-    "id": 120,
-    "title": "dolorem laboriosam vel voluptas et aliquam quasi",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 121,
-    "title": "inventore aut nihil minima laudantium hic qui omnis",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 122,
-    "title": "provident aut nobis culpa",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 123,
-    "title": "esse et quis iste est earum aut impedit",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 124,
-    "title": "qui consectetur id",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 125,
-    "title": "aut quasi autem iste tempore illum possimus",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 126,
-    "title": "ut asperiores perspiciatis veniam ipsum rerum saepe",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 127,
-    "title": "voluptatem libero consectetur rerum ut",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 128,
-    "title": "eius omnis est qui voluptatem autem",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 129,
-    "title": "rerum culpa quis harum",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 130,
-    "title": "nulla aliquid eveniet harum laborum libero alias ut unde",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 131,
-    "title": "qui ea incidunt quis",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 132,
-    "title": "qui molestiae voluptatibus velit iure harum quisquam",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 133,
-    "title": "et labore eos enim rerum consequatur sunt",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 134,
-    "title": "molestiae doloribus et laborum quod ea",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 135,
-    "title": "facere ipsa nam eum voluptates reiciendis vero qui",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 136,
-    "title": "asperiores illo tempora fuga sed ut quasi adipisci",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 137,
-    "title": "qui sit non",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 138,
-    "title": "placeat minima consequatur rem qui ut",
-    "completed": true
-  },
-  {
-    "userId": 7,
-    "id": 139,
-    "title": "consequatur doloribus id possimus voluptas a voluptatem",
-    "completed": false
-  },
-  {
-    "userId": 7,
-    "id": 140,
-    "title": "aut consectetur in blanditiis deserunt quia sed laboriosam",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 141,
-    "title": "explicabo consectetur debitis voluptates quas quae culpa rerum non",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 142,
-    "title": "maiores accusantium architecto necessitatibus reiciendis ea aut",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 143,
-    "title": "eum non recusandae cupiditate animi",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 144,
-    "title": "ut eum exercitationem sint",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 145,
-    "title": "beatae qui ullam incidunt voluptatem non nisi aliquam",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 146,
-    "title": "molestiae suscipit ratione nihil odio libero impedit vero totam",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 147,
-    "title": "eum itaque quod reprehenderit et facilis dolor autem ut",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 148,
-    "title": "esse quas et quo quasi exercitationem",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 149,
-    "title": "animi voluptas quod perferendis est",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 150,
-    "title": "eos amet tempore laudantium fugit a",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 151,
-    "title": "accusamus adipisci dicta qui quo ea explicabo sed vero",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 152,
-    "title": "odit eligendi recusandae doloremque cumque non",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 153,
-    "title": "ea aperiam consequatur qui repellat eos",
-    "completed": false
-  },
-  {
-    "userId": 8,
-    "id": 154,
-    "title": "rerum non ex sapiente",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 155,
-    "title": "voluptatem nobis consequatur et assumenda magnam",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 156,
-    "title": "nam quia quia nulla repellat assumenda quibusdam sit nobis",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 157,
-    "title": "dolorem veniam quisquam deserunt repellendus",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 158,
-    "title": "debitis vitae delectus et harum accusamus aut deleniti a",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 159,
-    "title": "debitis adipisci quibusdam aliquam sed dolore ea praesentium nobis",
-    "completed": true
-  },
-  {
-    "userId": 8,
-    "id": 160,
-    "title": "et praesentium aliquam est",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 161,
-    "title": "ex hic consequuntur earum omnis alias ut occaecati culpa",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 162,
-    "title": "omnis laboriosam molestias animi sunt dolore",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 163,
-    "title": "natus corrupti maxime laudantium et voluptatem laboriosam odit",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 164,
-    "title": "reprehenderit quos aut aut consequatur est sed",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 165,
-    "title": "fugiat perferendis sed aut quidem",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 166,
-    "title": "quos quo possimus suscipit minima ut",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 167,
-    "title": "et quis minus quo a asperiores molestiae",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 168,
-    "title": "recusandae quia qui sunt libero",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 169,
-    "title": "ea odio perferendis officiis",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 170,
-    "title": "quisquam aliquam quia doloribus aut",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 171,
-    "title": "fugiat aut voluptatibus corrupti deleniti velit iste odio",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 172,
-    "title": "et provident amet rerum consectetur et voluptatum",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 173,
-    "title": "harum ad aperiam quis",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 174,
-    "title": "similique aut quo",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 175,
-    "title": "laudantium eius officia perferendis provident perspiciatis asperiores",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 176,
-    "title": "magni soluta corrupti ut maiores rem quidem",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 177,
-    "title": "et placeat temporibus voluptas est tempora quos quibusdam",
-    "completed": false
-  },
-  {
-    "userId": 9,
-    "id": 178,
-    "title": "nesciunt itaque commodi tempore",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 179,
-    "title": "omnis consequuntur cupiditate impedit itaque ipsam quo",
-    "completed": true
-  },
-  {
-    "userId": 9,
-    "id": 180,
-    "title": "debitis nisi et dolorem repellat et",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 181,
-    "title": "ut cupiditate sequi aliquam fuga maiores",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 182,
-    "title": "inventore saepe cumque et aut illum enim",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 183,
-    "title": "omnis nulla eum aliquam distinctio",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 184,
-    "title": "molestias modi perferendis perspiciatis",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 185,
-    "title": "voluptates dignissimos sed doloribus animi quaerat aut",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 186,
-    "title": "explicabo odio est et",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 187,
-    "title": "consequuntur animi possimus",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 188,
-    "title": "vel non beatae est",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 189,
-    "title": "culpa eius et voluptatem et",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 190,
-    "title": "accusamus sint iusto et voluptatem exercitationem",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 191,
-    "title": "temporibus atque distinctio omnis eius impedit tempore molestias pariatur",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 192,
-    "title": "ut quas possimus exercitationem sint voluptates",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 193,
-    "title": "rerum debitis voluptatem qui eveniet tempora distinctio a",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 194,
-    "title": "sed ut vero sit molestiae",
-    "completed": false
-  },
-  {
-    "userId": 10,
-    "id": 195,
-    "title": "rerum ex veniam mollitia voluptatibus pariatur",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 196,
-    "title": "consequuntur aut ut fugit similique",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 197,
-    "title": "dignissimos quo nobis earum saepe",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 198,
-    "title": "quis eius est sint explicabo",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 199,
-    "title": "numquam repellendus a magnam",
-    "completed": true
-  },
-  {
-    "userId": 10,
-    "id": 200,
-    "title": "ipsam aperiam voluptates qui",
-    "completed": false
-  }
+app.config.globalProperties.$movie = [
+    {
+        img : 'https://an2-img.amz.wtchn.net/image/v2/JlaOuSAWgn33KwA2yNrqBA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk56STVlREV3T0RCeE9EQWlYU3dpY0NJNklpOTJNaTl6ZEc5eVpTOXBiV0ZuWlM4eE5qTXhNREV6TmprMk5qQXlOekk1TmpnMEluMC5qTFVtQzhReWc3RFlWZnNJWUhiNGs2UUxXM3Mzei1YajZXamNHZTRtdndB',
+        number : 1,
+        name : '명량',
+        director : '김한민',
+        release : '2014. 07. 30.',
+        accrue : '17,615,844명',
+    },
+    {
+        img : 'https://file2.nocutnews.co.kr/newsroom/image/2019/01/27/20190127122932672856_0_777_1106.jpg',
+        number : 2,
+        name : '극한직업',
+        director : '이병헌',
+        release : '2019. 01. 23.',
+        accrue : '16,266,338명',
+    },
+    {
+        img : 'https://w.namu.la/s/0340fc7fbb2b58252b706e8770f020d1d48f719a1de2a7c116005c98d79246f2f10f7205718045f7fbd663a8bb09ff94d2aab857a547bbc91319b9d9d5aa13651ca5bff329a719ef7365bef2fa0a794577e7038819283a3199da52da6afb9bd918690b9236ec93b95ae72b44566be04a',
+        number : 3,
+        name : '신과함께-죄와 벌',
+        director : '김용화',
+        release : '2017. 12. 20.',
+        accrue : '14,414,658명',
+    },
+    {
+        img : 'https://image.ajunews.com/content/image/2014/11/10/20141110092504483346.jpg',
+        number : 4,
+        name : '국제시장',
+        director : '윤제균',
+        release : '2014. 12. 17.',
+        accrue : '14,264,059명',
+    },
+    {
+        img : 'https://play-lh.googleusercontent.com/OxkGCb8tqaKSEGCDU4vGmvGuMG7cNpa6OXY18I4DPSzNxq9BYxrIiAg7enxOHrfSsE_b',
+        number : 5,
+        name : '어벤져스: 엔드게임',
+        director : '앤소니 루소, 조 루소',
+        release : '2019. 04. 24.',
+        accrue : '13,977,602명',
+    },
+    {
+        img : 'https://play-lh.googleusercontent.com/5zPcz2v-kOsj7L4GUjhrI-46R0bkr4-OBFMoPxFApYwwYIJBTLTp54hTRm8XL1-NkCif',
+        number : 6,
+        name : '겨울왕국 2',
+        director : '제니퍼 리, 크리스 벅',
+        release : '2019. 11. 21.',
+        accrue : '13,747,792명',
+    },
+    {
+        img : 'https://biz.chosun.com/resizer/7pTf0zckjFVi-Usehfel6dXIrOI=/1978x2835/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/HKULIOALG6XJFWOVNIGV7OVHWQ.jpg',
+        number : 7,
+        name : '아바타',
+        director : '제임스 카메론',
+        release : '2009. 12. 17.',
+        accrue : '13,486,963명',
+    },
+    {
+        img : 'https://web-cf-image.cjenm.com/crop/660x950/public/share/metamng/programs/veteran-movie-poster-ko-001-02.jpg?v=1662031810',
+        number : 8,
+        name : '베테랑',
+        director : '류승완',
+        release : '2015. 08. 05.',
+        accrue : '13,414,484명',
+    },
+    {
+        img : 'https://mblogthumb-phinf.pstatic.net/20120810_255/qnslsksl_1344609760205HGAH1_JPEG/movie_image5.jpg?type=w2',
+        number : 9,
+        name : '도둑들',
+        director : '최동훈',
+        release : '2012.07.25.',
+        accrue : '12,984,701명',
+    },
+    {
+        img : 'https://image.news1.kr/system/photos/2013/2/19/382517/article.jpg/dims/optimize',
+        number : 10,
+        name : '7번방의 선물',
+        director : '이환경',
+        release : '2013. 01. 23.',
+        accrue : '12,812,144명',
+    },
+    // {
+    //     number : 11,
+    //     name : '알라딘',
+    //     release : '2019. 05. 23.',
+    //     accrue : '12,723,777명',
+    // },
+    // {
+    //     number : 12,
+    //     name : '암살',
+    //     release : '2015. 07. 22.',
+    //     accrue : '12,706,855명',
+    // },
+    // {
+    //     number : 13,
+    //     name : '범죄도시2',
+    //     release : '2022. 05. 18.',
+    //     accrue : '12,693,146명',
+    // },
+    // {
+    //     number : 14,
+    //     name : '광해, 왕이 된 남자',
+    //     release : '2012. 09. 13.',
+    //     accrue : '12,324,062명',
+    // },
+    // {
+    //     number : 15,
+    //     name : '신과함께-인과 연',
+    //     release : '2018. 08. 01.',
+    //     accrue : '12,278,010명',
+    // },
+    // {
+    //     number : 16,
+    //     name : '택시운전사',
+    //     release : '2017. 08. 02.',
+    //     accrue : '12,189,698명',
+    // },
+    // {
+    //     number : 17,
+    //     name : '부산행',
+    //     release : '2016. 07. 20.',
+    //     accrue : '11,572,066명',
+    // },
+    // {
+    //     number : 18,
+    //     name : '변호인',
+    //     release : '2013. 12. 18.',
+    //     accrue : '11,375,223명',
+    // },
+    // {
+    //     number : 19,
+    //     name : '해운대',
+    //     release : '2009. 07. 22.',
+    //     accrue : '11,325,117명',
+    // },
+    // {
+    //     number : 20,
+    //     name : '어벤져스: 인피니티 워',
+    //     release : '2018. 04. 25.',
+    //     accrue : '11,233,176명',
+    // },
+    // {
+    //     number : 21,
+    //     name : '실미도',
+    //     release : '2003. 12. 24.',
+    //     accrue : '11,081,000명',
+    // },
+    // {
+    //     number : 22,
+    //     name : '괴물',
+    //     release : '2006. 07. 27.',
+    //     accrue : '10,917,400명',
+    // },
+    // {
+    //     number : 23,
+    //     name : '왕의 남자',
+    //     release : '2005. 12. 29.',
+    //     accrue : '10,514,177명',
+    // },
+    // {
+    //     number : 24,
+    //     name : '어벤져스: 에이지 오브 울트론',
+    //     release : '2015. 04. 23.',
+    //     accrue : '10,504,007명',
+    // },
+    // {
+    //     number : 25,
+    //     name : '인터스텔라',
+    //     release : '2014. 11. 06.',
+    //     accrue : '10,326,240명',
+    // },
+    // {
+    //     number : 26,
+    //     name : '기생충',
+    //     release : '2019. 05. 30.',
+    //     accrue : '10,313,345명',
+    // },
+    // {
+    //     number : 27,
+    //     name : '겨울왕국',
+    //     release : '2014. 01. 16.',
+    //     accrue : '10,303,058명',
+    // },
 ];
+
+// createApp(App).mount('#app')
 
 app.use(router)
 app.mount('#app')

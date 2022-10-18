@@ -1,25 +1,16 @@
 <template>
-  <div class="app-menu">
-    <header-menu />
-    <router-view />
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HeaderMenu from "./components/HeaderMenu.vue";
+import ListPage from './components/ListPage.vue';
 export default {
-    components: {
-        HeaderMenu
-    }
+  component : ListPage
 };
 </script>
 
 <style>
-  .app-menu{
-    text-align: center;
-  }
-  a{
-    text-decoration-line: none;
-    color: black;
-  }
+
 </style>
